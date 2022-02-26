@@ -62,3 +62,28 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Tourism
+
+Tourism is travel for pleasure or business.
+
+# Description
+
+Tourism means activities related to people's trips outside their regular places of residence for no more than 1 year in a row in order to meet the needs of sightseeing, relaxation, entertainment, and discovery of tourism resources. and activities in conjunction with other lawful purposes.
+
+# Getting started
+
+## Dependencies 
+- Describe any prerequisiter , libraries, OS version, ect., needed before installing program.
+- ex. Windows 10
+
+## Installing
+- How/where to download your peogram
+- Any modifications needed to be made to file/folders
+
+## Executing program
+- How to run the program
+- Step-by-step bullets
+```
+code blocks for commands
+```
