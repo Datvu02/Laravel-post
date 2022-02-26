@@ -21,14 +21,14 @@ Route::get('/login', function () {
   return view('login');
 })->name("login");
 
-route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function(){
 
   Route::get('/dashboard', function(){
     return view("dashboard");
   })->name('dashboard');
 
 
-  route::prefix('users')->name('users.')->group(function(){
+  Route::prefix('users')->name('users.')->group(function(){
     Route::get('/list', function(){
       return view('users/list');
     })->name('listUsers');
@@ -59,7 +59,7 @@ route::prefix('admin')->name('admin.')->group(function(){
     })->name('delete');
   });
 
-  route::prefix('categories')->name('categories.')->group(function(){
+  Route::prefix('categories')->name('categories.')->group(function(){
     Route::get('/list', function(){
       return view('categories/list');
     })->name('listCategories');
@@ -90,7 +90,7 @@ route::prefix('admin')->name('admin.')->group(function(){
     })->name('delete');
   });
 
-  route::prefix('posts')->name('posts.')->group(function(){
+  Route::prefix('posts')->name('posts.')->group(function(){
     Route::get('/list', function(){
       return view('posts/list');
     })->name('listPosts');
