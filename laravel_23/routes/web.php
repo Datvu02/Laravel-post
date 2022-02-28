@@ -13,112 +13,107 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
 
 Route::get('/login', function () {
   return view('login');
 })->name("login");
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('frontend')->name('frontend.')->group(function(){
 
-  Route::get('/dashboard', function(){
-    return view("dashboard");
-  })->name('dashboard');
+  Route::get('/index', function(){
+    return view('frontend/dashboard');
+  })->name('home');
 
-
-  Route::prefix('users')->name('users.')->group(function(){
-    Route::get('/list', function(){
-      return view('users/list');
-    })->name('listUsers');
+  Route::prefix('/users')->name('users.')->group(function(){
+    Route::get('/index', function(){
+      return view('frontend.users.index');
+    })->name('index');
 
     Route::get('/show/{id}', function($id){
-      return "Backend show User" .$id;
+      return "frontend show User" .$id;
     })->name('show');
     
     Route::get('/create', function(){
-      return view('users/create');
+      return view('frontend.users.create');
     })->name('create');
     
     Route::post('/store', function(){
-      return redirect()->route('admin.users.listUsers');
+      return redirect()->route('frontend.users.index');
       // return 'ádsad';
     })->name('store');
 
     Route::get('/edit/{id}', function($id){
-      return view('users/edit');
+      return view('frontend.users.edit');
     })->name('edit');
 
     Route::put('/update/{id}', function($id){
-      return redirect()->route('admin.users.listUsers');
+      return redirect()->route('frontend.users.index');
     })->name('update');
     
     Route::get('/delete/{id}', function($id){
-      return redirect()->route('backend.user.index');
+      return redirect()->route('frontend.users.index');
     })->name('delete');
   });
 
   Route::prefix('categories')->name('categories.')->group(function(){
-    Route::get('/list', function(){
-      return view('categories/list');
-    })->name('listCategories');
+    Route::get('/index', function(){
+      return view('frontend.categories.index');
+    })->name('index');
 
     Route::get('/show/{id}', function($id){
-      return "Backend show categories" .$id;
+      return "frontend show categories" .$id;
     })->name('show');
     
     Route::get('/create', function(){
-      return view('categories/create');
+      return view('frontend.categories.create');
     })->name('create');
     
     Route::post('/store', function(){
-      return redirect()->route('admin.categories.listCategories');
+      return redirect()->route('frontend.categories.index');
       // return 'ádsad';
     })->name('store');
 
     Route::get('/edit/{id}', function($id){
-      return view('categories/edit');
+      return view('frontend.categories.edit');
     })->name('edit');
 
     Route::put('/update/{id}', function($id){
-      return redirect()->route('admin.categories.listCategories');
+      return redirect()->route('frontend.categories.index');
     })->name('update');
     
     Route::get('/delete/{id}', function($id){
-      return redirect()->route('backend.categories.index');
+      return redirect()->route('frontend.categories.index');
     })->name('delete');
   });
 
   Route::prefix('posts')->name('posts.')->group(function(){
-    Route::get('/list', function(){
-      return view('posts/list');
-    })->name('listPosts');
+    Route::get('/index', function(){
+      return view('frontend.posts.index');
+    })->name('index');
 
     Route::get('/show/{id}', function($id){
-      return "Backend show posts" .$id;
+      return "frontend show posts" .$id;
     })->name('show');
     
     Route::get('/create', function(){
-      return view('posts/create');
+      return view('frontend.posts.create');
     })->name('create');
     
     Route::post('/store', function(){
-      return redirect()->route('admin.posts.listPosts');
+      return redirect()->route('frontend.posts.index');
       // return 'ádsad';
     })->name('store');
 
     Route::get('/edit/{id}', function($id){
-      return view('posts/edit');
+      return view('frontend.posts.edit');
     })->name('edit');
 
     Route::put('/update/{id}', function($id){
-      return redirect()->route('admin.posts.listPosts');
+      return redirect()->route('frontend.posts.index');
     })->name('update');
     
     Route::get('/delete/{id}', function($id){
-      return redirect()->route('backend.posts.index');
+      return redirect()->route('frontend.posts.index');
     })->name('delete');
   });
-  
 });
