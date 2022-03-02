@@ -1,6 +1,6 @@
-@extends('frontend.layouts.master')
+@extends('admin.layouts.master')
 @section ('title')
-Chỉnh sửa Users
+  Danh sách Blog
 @endsection
 @section ('CSS')
   <!-- Google Font: Source Sans Pro -->
@@ -29,61 +29,82 @@ Chỉnh sửa Users
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Chỉnh sửa Post</h1>
+              <h1 class="m-0">Chỉnh sửa Blog</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Chỉnh sửa Users</li>
+                <li class="breadcrumb-item active">Chỉnh sửa Blog</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
 @endsection
+
 @section ('content')
-<div class="container">
-<form action="{{ route('frontend.posts.update',1) }}" method="POST" role="form" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="_method" value="put">
-        <div class="form-group">
-            <label for="">Title</label>
-            <input type="hidden" name="id" value="">
-            <input type="text" class="form-control" name="title" value="">
+  <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Fixed Header Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Tiêu đề</th>
+                      <th>Ảnh</th>
+                      <th>Danh mục</th>
+                      <th>Tác giả</th>
+                      <th>Lượt xem</th>
+                      <th>Thời gian tạo</th>
+                      <th>Hoạt động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                        <td></td>
+                        <td> <p style="width: 110px !important; white-space: normal;"></p> </td>
+                        <td>
+                            <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
+                        </td>
+                        <td> <p style="width: 100px !important; white-space: normal;"></p> </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="{{ route('admin.posts.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
+                            <a href="{{ route('admin.posts.delete',1) }}" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
-        <div class="form-group">
-            <label for="">Description</label>
-            <input type="text" class="form-control"  name="description" value="">
-        </div><div class="form-group">
-            <label for="">Ảnh</label>
-            <input type="file" class="form-control" name="thumbnail" value="">
-        </div>
-        <div class="form-group">
-            <label for="">Danh mục</label>
-            <select class="form-control" name="category_id">
-                <option value="<"></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">Tác giả</label>
-            <select class="form-control" name="user_id">
-                <option value=""></option>
-            </select>
-        </div>
-        <!-- <div class="form-group">
-            <label for="">Nội dung</label>
-            <input type="text" class="form-control" id="contentMovie"  name="content" >
-        </div> -->
-        <div class="form-group">
-            <label for="">Nội dung</label>
-            <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value=""></textarea>
-        </div>
-        <div>
-          <a href="{{ route('frontend.users.index') }}" class="btn btn-primary">Hủy</a>
-          <button style="margin-left:85%" type="submit" class="btn btn-primary">Update</button>
-        </div>
-    </form>
-    </div>
+        
+      </div><!-- /.container-fluid -->
 @endsection
+
 @section ('scrip')
     <!-- jQuery -->
   <script src="/backend/plugins/jquery/jquery.min.js"></script>

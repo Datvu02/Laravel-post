@@ -1,6 +1,6 @@
-@extends('frontend.layouts.master')
+@extends('admin.layouts.master')
 @section ('title')
-  Danh sách user
+  Home
 @endsection
 @section ('CSS')
   <!-- Google Font: Source Sans Pro -->
@@ -39,6 +39,7 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+@endsection
 
 @section ('content')
   

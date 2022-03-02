@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('admin.layouts.master')
 @section ('title')
   Thêm mới Post
 @endsection
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="/backend/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.min.css">
+  <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 @endsection
 
 @section ('content-header')
@@ -42,7 +43,7 @@
 @endsection
 @section ('content')
 <div class="container">
-        <form action="{{ route('frontend.posts.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
             <div class="form-group">
                 <label for="">Tiêu đề</label>
@@ -73,7 +74,7 @@
                 <label for="">Nội dung</label>
                 <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10"></textarea>
             </div>
-            <a href="{{ route('frontend.posts.index') }}" class="btn btn-primary">Hủy</a>
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Hủy</a>
             <button style="margin-left:85%" type="submit" class="btn btn-primary">Tạo mới</button>
         </form>
     </div>
@@ -113,4 +114,9 @@
   <script src="/backend/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="/backend/dist/js/pages/dashboard.js"></script>
+  <script>
+                // Replace the <textarea id="editor1"> with a CKEditor 4
+                // instance, using default configuration.
+                CKEDITOR.replace( 'contentMovie' );
+            </script>
 @endsection

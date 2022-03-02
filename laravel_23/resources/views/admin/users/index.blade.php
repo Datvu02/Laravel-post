@@ -1,6 +1,6 @@
-@extends('frontend.layouts.master')
+@extends('admin.layouts.master')
 @section ('title')
-  Thêm mới user
+  Danh sách user
 @endsection
 @section ('CSS')
   <!-- Google Font: Source Sans Pro -->
@@ -29,45 +29,77 @@
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Thêm mới users</h1>
+              <h1 class="m-0">Danh sách users</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Thêm mới Users</li>
+                <li class="breadcrumb-item active">Danh sách Users</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
 @endsection
+
 @section ('content')
-<form action="{{ route('frontend.users.store') }}" method="POST" role="form" enctype="multipart/form-data">
-    @csrf
-    <div class="form-floating mb-3">
-      <label for="inputEmail">Tên</label>
-        <input class="form-control" name="name" id="inputName" type="" />
-    </div>
-    <div class="form-floating mb-3">
-      <label for="inputEmail">Email</label>
-      <input class="form-control" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
-    </div>
-    <div class="form-floating mb-3">
-      <label for="avatar">avatar</label>
-      <input type="file" class="form-control" id="avatar" name="avatar">
-    </div>
-    <div class="form-floating mb-3">
-      <label for="inputPassword" >Mật Khẩu</label>
-      <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Nhập mật khẩu" />
-    </div>
-    <div>
-      <a href="{{ route('frontend.users.index') }}" class="btn btn-primary">Hủy</a>
-      <button style="margin-left:85%" type="submit" class="btn btn-primary">Tạo mới</button>
-    </div>
-  </form>
-  <div class="card-footer text-center py-3">
-    <div class="small"><a href="index.php?mod=auth&act=login">Bạn đã có tài khoản? Đi tới đăng nhập</a></div>
-  </div>
+  <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Fixed Header Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Avatar</th>
+                      <th>Email</th>
+                      <th>Thời gian tạo</th>
+                      <th>Hoạt động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td><img src="" alt=""></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                          <a href="{{ route('admin.users.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
+                          <a href="{{ route('admin.users.delete',1) }}" class="btn btn-danger">Xóa</a>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        
+      </div><!-- /.container-fluid -->
 @endsection
+
 @section ('scrip')
     <!-- jQuery -->
   <script src="/backend/plugins/jquery/jquery.min.js"></script>

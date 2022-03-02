@@ -1,7 +1,7 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('frontend.home') }}" class="brand-link">
+    <a href="{{ route('admin.home') }}" class="brand-link">
       <img src="/backend/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">LARAVEL 22</span>
     </a>
@@ -38,7 +38,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-            <a href="{{ route('frontend.home') }}" class="nav-link">
+            <a href="{{ route('admin.home') }}" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                 Dashboard
@@ -57,13 +57,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('frontend.posts.index') }}" class="nav-link">
+                <a href="{{ route('admin.posts.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách Blog</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('frontend.posts.create') }}" class="nav-link">
+                <a href="{{ route('admin.posts.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo mới Blog</p>
                 </a>
@@ -82,13 +82,13 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('frontend.users.index') }}" class="nav-link">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Danh sách users</p>
                     </a>
                 </li>
               <li class="nav-item">
-                <a href="{{ route('frontend.users.create') }}" class="nav-link">
+                <a href="{{ route('admin.users.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo mới user</p>
                 </a>
