@@ -57,15 +57,39 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách Blog</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.posts.create') }}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo mới Blog</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#2" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý Categories
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.categories.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách Categories</p>
+                    </a>
+                </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.categories.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tạo mới categories</p>
                 </a>
               </li>
             </ul>

@@ -84,7 +84,7 @@
                       <td></td>
                       <td>
                           <a href="{{ route('admin.users.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
-                          <a href="{{ route('admin.users.delete',1) }}" class="btn btn-danger">Xóa</a>
+                          <a href="{{ route('admin.users.destroy',1) }}" class="btn btn-danger">Xóa</a>
                       </td>
                     </tr>
                     
