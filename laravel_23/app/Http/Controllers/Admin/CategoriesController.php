@@ -38,7 +38,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
-        return redirect()->view('admin.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -75,7 +75,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return redirect()->view('admin.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -87,6 +87,6 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        return redirect()->view('admin.categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }

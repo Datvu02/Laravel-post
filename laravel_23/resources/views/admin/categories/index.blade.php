@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section ('title')
-  Danh sách Blog
+  Danh sách danh mục
 @endsection
 @section ('CSS')
   
@@ -10,12 +10,12 @@
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Chỉnh sửa Blog</h1>
+              <h1 class="m-0">Chỉnh sửa danh mục</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Chỉnh sửa Blog</li>
+                <li class="breadcrumb-item active">Chỉnh sửa danh mục</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -49,11 +49,10 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>Tiêu đề</th>
+                      <th>Tên</th>
+                      <th>Mô tả</th>
                       <th>Ảnh</th>
-                      <th>Danh mục</th>
-                      <th>Tác giả</th>
-                      <th>Lượt xem</th>
+                      <th>Danh mục cha</th>
                       <th>Thời gian tạo</th>
                       <th>Hoạt động</th>
                     </tr>
@@ -62,17 +61,16 @@
                   <tr>
                         <td></td>
                         <td> <p style="width: 110px !important; white-space: normal;"></p> </td>
+                        <td></td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
                         </td>
                         <td> <p style="width: 100px !important; white-space: normal;"></p> </td>
                         <td></td>
-                        <td></td>
-                        <td></td>
                         <td>
-                            <a href="{{ route('admin.posts.show',1) }}" class="btn btn-danger">Show</a>
-                            <a href="{{ route('admin.posts.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
-                            <a href="{{ route('admin.posts.destroy',1) }}" class="btn btn-danger">Xóa</a>
+                            <a href="{{ route('admin.categories.show',1) }}" class="btn btn-danger">Show</a>
+                            <a href="{{ route('admin.categories.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
+                            <a href="{{ route('admin.categories.destroy',1) }}" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
                   </tbody>
