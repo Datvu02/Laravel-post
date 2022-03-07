@@ -15,7 +15,7 @@ class AddCategoryIdUpdatePostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->string('category_id ')->after('user_create_id');
+            $table->integer('category_id')->after('user_create_id');
         });
     }
 
