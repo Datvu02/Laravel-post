@@ -22,9 +22,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
 
   Route::get('/', 'DashboardController@index' )->name('home');
 
-  Route::Resource('users', UsersController::class)->only([
-    'index', 'create', 'store', 'edit', 'update', 'destroy'
-  ])->parameters([
+  Route::Resource('users', UsersController::class)->parameters([
     'user' => 'user_id'
   ]);
   Route::Resource('posts', PostsController::class)->parameters([

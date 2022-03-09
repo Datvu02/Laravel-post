@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,8 @@ class PostsController extends Controller
     public function index()
     {
         //
-        return view('admin.posts.index');
+        $posts = DB::table('posts')->get();
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -50,7 +52,9 @@ class PostsController extends Controller
     public function show($id)
     {
         //
-        return view('admin.posts.show', 1);
+        $post = DB::table('posts')->find($id);
+        // dd($post);
+        return view('admin.posts.show', ['post' => $post]);
     }
 
     /**

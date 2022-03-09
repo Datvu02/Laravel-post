@@ -10,12 +10,12 @@
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Chỉnh sửa Blog</h1>
+              <h1 class="m-0">Danh sách Blog</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Chỉnh sửa Blog</li>
+                <li class="breadcrumb-item active">Danh sách Blog</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -44,37 +44,41 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
                   <thead>
-                  <tr>
-                      <th>ID</th>
+                    <tr>
+                    <th>ID</th>
                       <th>Tiêu đề</th>
                       <th>Ảnh</th>
                       <th>Danh mục</th>
                       <th>Tác giả</th>
+                      <th>Trạng thái</th>
                       <th>Lượt xem</th>
                       <th>Thời gian tạo</th>
                       <th>Hoạt động</th>
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach($posts as $post)
                   <tr>
-                        <td></td>
-                        <td> <p style="width: 110px !important; white-space: normal;"></p> </td>
+                        <td>{{ $post->id }}</td>
+                        <td> <a href="">{{ $post->title }}</a> </td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
                         </td>
-                        <td> <p style="width: 100px !important; white-space: normal;"></p> </td>
+                        <td>{{ $post->category_id }}</td>
+                        <td> {{ $post->user_create_id }} </td>
+                        <td> {{ $post->status }} </td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $post->created_at }}</td>
                         <td>
-                            <a href="{{ route('admin.posts.show',1) }}" class="btn btn-danger">Show</a>
-                            <a href="{{ route('admin.posts.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
-                            <a href="{{ route('admin.posts.destroy',1) }}" class="btn btn-danger">Xóa</a>
+                            <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-danger">Show</a>
+                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Chỉnh sửa</a>
+                            <a href="{{ route('admin.posts.destroy', $post->id) }}" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
+                    @endforeach;
                   </tbody>
                 </table>
               </div>
@@ -83,7 +87,6 @@
             <!-- /.card -->
           </div>
         </div>
-        
       </div><!-- /.container-fluid -->
 @endsection
 

@@ -24,6 +24,12 @@
   <link rel="stylesheet" href="/backend/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.min.css">
+  <style>
+      td,th{
+          text-align: center;
+          vertical-align: middle !important;
+      }
+  </style>
     @yield('CSS')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

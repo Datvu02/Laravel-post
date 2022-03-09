@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -44,8 +44,8 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -57,18 +57,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td><img src="" alt=""></td>
-                      <td></td>
-                      <td></td>
+                  @foreach($users as $user)
+                  <tr>
+                      <td>{{ $user->id }}</td>
+                      <td> <a href="">{{ $user->name }}</a> </td>
+                      <td><img src="{{ $user->avatar }}" alt=""></td>
+                      <td>{{ $user->email }}</td>
+                      <td>{{ $user->created_at }}</td>
                       <td>
-                          <a href="{{ route('admin.users.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
-                          <a href="{{ route('admin.users.destroy',1) }}" class="btn btn-danger">Xóa</a>
+                          <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-danger">Show</a>
+                          <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">Chỉnh sửa</a>
+                          <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger">Xóa</a>
                       </td>
                     </tr>
-                    
+                    @endforeach;
                   </tbody>
                 </table>
               </div>
@@ -77,7 +79,6 @@
             <!-- /.card -->
           </div>
         </div>
-        
       </div><!-- /.container-fluid -->
 @endsection
 

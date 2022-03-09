@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -44,10 +44,10 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
                   <thead>
-                  <tr>
+                    <tr>
                       <th>ID</th>
                       <th>Tên</th>
                       <th>Mô tả</th>
@@ -58,9 +58,10 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach($categories as $category)
                   <tr>
-                        <td></td>
-                        <td> <p style="width: 110px !important; white-space: normal;"></p> </td>
+                        <td>{{ $category->id }}</td>
+                        <td> <a href="">{{ $category->name }}</a> </td>
                         <td></td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
@@ -68,11 +69,12 @@
                         <td> <p style="width: 100px !important; white-space: normal;"></p> </td>
                         <td></td>
                         <td>
-                            <a href="{{ route('admin.categories.show',1) }}" class="btn btn-danger">Show</a>
-                            <a href="{{ route('admin.categories.edit',1) }}" class="btn btn-success">Chỉnh sửa</a>
-                            <a href="{{ route('admin.categories.destroy',1) }}" class="btn btn-danger">Xóa</a>
+                            <a href="{{ route('admin.categories.show', $category->id) }}" class="btn btn-danger">Show</a>
+                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-success">Chỉnh sửa</a>
+                            <a href="{{ route('admin.categories.destroy', $category->id) }}" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
+                    @endforeach;
                   </tbody>
                 </table>
               </div>
@@ -81,7 +83,6 @@
             <!-- /.card -->
           </div>
         </div>
-        
       </div><!-- /.container-fluid -->
 @endsection
 

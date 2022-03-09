@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        return view('admin.users.index');
+        $users = DB::table('users')->get();
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -26,6 +28,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+
         return view('admin.users.create');
     }
 
@@ -50,6 +53,7 @@ class UsersController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
