@@ -103,6 +103,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        // return redirect()->route('admin.users.delete');
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->route('admin.users.index');
     }
 }

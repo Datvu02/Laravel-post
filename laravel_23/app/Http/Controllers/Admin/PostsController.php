@@ -115,6 +115,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('posts')->where('id', $id)->dekete();
         return redirect()->route('admin.posts.index');
     }
 }

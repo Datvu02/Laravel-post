@@ -75,7 +75,13 @@
                         <td>
                             <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-danger">Show</a>
                             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Chỉnh sửa</a>
-                            <a href="{{ route('admin.posts.destroy', $post->id) }}" class="btn btn-danger">Xóa</a>
+                            <form method="POST" action="{{ route('admin.posts.destroy', $post->id) }}">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach;
