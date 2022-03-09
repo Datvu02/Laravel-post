@@ -31,13 +31,14 @@
                 <input type="text" class="form-control" id="" placeholder="" name="title">
             </div>
             <div class="form-group">
-                <label for="">Mô tả</label>
-                <textarea name="description" class="form-control" id="" cols="40" rows="5"></textarea>
+                <label for="">Slug</label>
+                <input type="text" class="form-control" id="" placeholder="" name="slug">
+                <!-- <textarea name="description" class="form-control" id="" cols="40" rows="5"></textarea> -->
                 <!-- <input type="text" class="form-control" id="" placeholder="" name="description"> -->
             </div>
             <div class="form-group">
                 <label for="">Ảnh</label>
-                <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+                <input type="file" class="form-control" id="image_url" name="image_url">
             </div>
             <div class="form-group">
                 <label for="">Danh mục</label>

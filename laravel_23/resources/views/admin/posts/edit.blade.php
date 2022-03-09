@@ -4,6 +4,7 @@ Chỉnh sửa Users
 @endsection
 @section ('CSS')
 
+  <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 @endsection
 
 @section ('content-header')
@@ -23,25 +24,28 @@ Chỉnh sửa Users
 @endsection
 @section ('content')
 <div class="container">
-<form action="{{ route('admin.posts.update',1) }}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{ route('admin.posts.update', $post->id) }}" method="POST" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="_method" value="put">
         <div class="form-group">
             <label for="">Title</label>
             <input type="hidden" name="id" value="">
-            <input type="text" class="form-control" name="title" value="">
+            <input type="text" class="form-control" name="title" value="{{ $post->title }}">
         </div>
         <div class="form-group">
-            <label for="">Description</label>
-            <input type="text" class="form-control"  name="description" value="">
-        </div><div class="form-group">
+            <label for="">Trạng thái</label>
+            <select class="form-control" name="status">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
+        <!-- </div><div class="form-group">
             <label for="">Ảnh</label>
             <input type="file" class="form-control" name="thumbnail" value="">
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="">Danh mục</label>
             <select class="form-control" name="category_id">
-                <option value="<"></option>
+                <option value=""></option>
             </select>
         </div>
         <div class="form-group">
@@ -56,7 +60,7 @@ Chỉnh sửa Users
         </div> -->
         <div class="form-group">
             <label for="">Nội dung</label>
-            <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value=""></textarea>
+            <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value="{{ $post->content }}"></textarea>
         </div>
         <div>
           <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Hủy</a>
@@ -66,5 +70,10 @@ Chỉnh sửa Users
     </div>
 @endsection
 @section ('scrip')
+  <script>
+      // Replace the <textarea id="editor1"> with a CKEditor 4
+      // instance, using default configuration.
+      CKEDITOR.replace( 'contentMovie' );
+  </script>
   
 @endsection

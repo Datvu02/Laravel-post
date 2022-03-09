@@ -28,21 +28,21 @@
                 <label for="">Tên</label>
                 <input type="text" class="form-control" id="" placeholder="" name="name">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="">Mô tả</label>
                 <textarea name="description" class="form-control" id="" cols="40" rows="5"></textarea>
-                <!-- <input type="text" class="form-control" id="" placeholder="" name="description"> -->
-            </div>
-            <div class="form-group">
+                <input type="text" class="form-control" id="" placeholder="" name="description"> 
+            </div> -->
+            <!-- <div class="form-group">
                 <label for="">Ảnh</label>
                 <input type="file" class="form-control" id="thumbnail" name="thumbnail">
-            </div>
-            <div class="form-group">
+            </div> -->
+            <!-- <div class="form-group">
                 <label for="">Danh mục cha</label>
                 <select class="form-control" name="parent_id">
                     <option value=""></option>
                 </select>
-            </div>
+            </div> -->
             <a href="{{ route('admin.categories.index') }}" class="btn btn-primary">Hủy</a>
             <button style="margin-left:85%" type="submit" class="btn btn-primary">Tạo mới</button>
         </form>

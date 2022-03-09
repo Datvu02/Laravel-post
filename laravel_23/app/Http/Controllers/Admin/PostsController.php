@@ -28,6 +28,7 @@ class PostsController extends Controller
     public function create()
     {
         //
+        
         return view('admin.posts.create');
     }
 
@@ -40,6 +41,18 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        $data = request();
+        DB::table('posts')->insert([
+            'title' =>  $data['title'],
+           'slug' =>  $data['slug'],
+           'content' =>  $data['content'],
+           'user_create_id' => 1,
+           'category_id' =>  1,
+           'status' => 1,
+           'created_at' => now(),
+           'updated_at' => now()
+
+        ]);
         return redirect()->route('admin.posts.index');
     }
 
@@ -66,7 +79,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
-        return view('admin.posts.edit', 1);
+        $post = DB::table('posts')->find($id);
+        return view('admin.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -79,6 +93,16 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request();
+        DB::table('posts')->where('id', $id)->update([
+            'title' =>  $data['title'],
+        //    'slug' =>  $data['slug'],
+           'content' =>  $data['content'],
+        //    'user_create_id' => 1,
+        //    'category_id' =>  1,
+           'status' => $data['status'],
+           'updated_at' => now()
+        ]);
         return redirect()->route('admin.posts.index');
     }
 

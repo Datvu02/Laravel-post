@@ -23,15 +23,15 @@ Chỉnh sửa danh mục
 @endsection
 @section ('content')
 <div class="container">
-<form action="{{ route('admin.categories.update',1) }}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{ route('admin.categories.update', $category->id) }}" method="POST" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="_method" value="put">
         <div class="form-group">
             <label for="">Tên</label>
-            <input type="hidden" name="id" value="">
-            <input type="text" class="form-control" name="name" value="">
+            <input type="hidden" name="id" value="name">
+            <input type="text" class="form-control" name="name" value="{{ $category->name }}">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="">Mô tả</label>
             <input type="text" class="form-control"  name="description" value="">
         </div><div class="form-group">
@@ -43,7 +43,7 @@ Chỉnh sửa danh mục
             <select class="form-control" name="parent_id">
                 <option value="<"></option>
             </select>
-        </div>
+        </div> -->
         <div>
           <a href="{{ route('admin.categories.index') }}" class="btn btn-primary">Hủy</a>
           <button style="margin-left:85%" type="submit" class="btn btn-primary">Update</button>

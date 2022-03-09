@@ -53,7 +53,8 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        
+        $user = DB::table('users')->find($id);
+        return view('admin.users.show', ['user' => $user]);
     }
 
     /**
@@ -65,7 +66,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        return view('admin.users.edit');
+        $user = DB::table('users')->find($id);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -78,6 +80,17 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request();
+        DB::table('users')->updateOrInsert([
+            'name' => $data['name'],
+            'avatar' => $data['avatar'],
+            'email' => $data['email'],
+            'status' => $data['status'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'password' => $data['password'],
+            // 'updated_at' => now()
+        ]);
         return redirect()->route('admin.users.index');
     }
 

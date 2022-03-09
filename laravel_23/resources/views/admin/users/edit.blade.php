@@ -23,23 +23,40 @@ Chỉnh sửa Users
 @endsection
 @section ('content')
 <div class="container">
-<form action="{{ route('admin.users.update',1) }}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{ route('admin.users.update', $user->id) }}" method="POST" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="_method" value="put">
         <div class="form-group">
             <label for="">Name</label>
             <input type="hidden" name="Name" value="">
-            <input type="text" class="form-control" name="title" value="">
+            <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+        </div>
+        <div class="form-group">
+            <label for="">Trạng thái</label>
+            <select class="form-control" name="status">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="">Avatar</label>
-            <input type="file" class="form-control" name="thumbnail" value="">
+            <input type="file" class="form-control" name="avatar" value="{{ $user->avatar }}">
         </div>
         <div class="form-group">
             <label for="">Email</label>
-            <select class="form-control" name="Email">
-                <option value="<"></option>
-            </select>
+            <input type="text" class="form-control" name="email" value="{{ $user->email }}">
+        </div>
+        <div class="form-group">
+            <label for="">Địa chỉ</label>
+            <input type="text" class="form-control" name="address" value="{{ $user->address }}">
+        </div>
+        <div class="form-group">
+            <label for="">Số điẹn thoại</label>
+            <input type="number" class="form-control" name="phone" value="{{ $user->phone }}">
+        </div>
+        <div class="form-group">
+            <label for="">Mật khâu</label>
+            <input type="password" class="form-control" name="password" value="{{ $user->password }}">
         </div>
         <div>
           <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Hủy</a>
