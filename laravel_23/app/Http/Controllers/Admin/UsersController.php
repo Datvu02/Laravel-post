@@ -16,7 +16,17 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->get();
+        $email = \request()->get('email');
+        $name = \request()->get('name');
+        $users_query = DB::table('users')->select('*');
+
+        if (!empty($email)) {
+            $users_query = $users_query->where('email', "LIKE", "%$email%");
+        }
+        if (!empty($name)) {
+            $users_query = $users_query->where('name', "LIKE", "%$name%");
+        }
+        $users = $users_query->get();
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -41,6 +51,17 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $data = request();
+        DB::table('users')->insert([
+            'name' => $data['name'],
+            'avatar' => $data['avatar'],
+            'email' => $data['email'],
+            'status' => $data['status'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'password' => $data['password'],
+            // 'updated_at' => now()
+        ]);
         return redirect()->route('admin.users.index');
     }
 
@@ -89,7 +110,7 @@ class UsersController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'password' => $data['password'],
-            // 'updated_at' => now()
+            'updated_at' => now()
         ]);
         return redirect()->route('admin.users.index');
     }

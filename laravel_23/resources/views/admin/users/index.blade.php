@@ -32,15 +32,13 @@
                 <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
+                  <form>
+                    <div class="input-group" style="width: 400px">
+                      <input type="text" name="email" class="form-control" placeholder="Email" value="{{ request()->get('email') }}">
+                      <input type="text" name="name" class="form-control float-right" placeholder="Name" value="{{ request()->get('name') }}">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
               <!-- /.card-header -->

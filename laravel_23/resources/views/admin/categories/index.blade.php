@@ -10,12 +10,12 @@
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Chỉnh sửa danh mục</h1>
+              <h1 class="m-0">Danh sách danh mục</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Chỉnh sửa danh mục</li>
+                <li class="breadcrumb-item active">Danh sách danh mục</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -32,7 +32,7 @@
                 <h3 class="card-title">Responsive Hover Table</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
+                  <div class="input-group input-group-sm" style="width: 150px">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                     <div class="input-group-append">

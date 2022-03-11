@@ -45,13 +45,13 @@ Chỉnh sửa Users
         <div class="form-group">
             <label for="">Danh mục</label>
             <select class="form-control" name="category_id">
-                <option value=""></option>
+                <option value="">{{ $post->category_id }}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="">Tác giả</label>
-            <select class="form-control" name="user_id">
-                <option value=""></option>
+            <select class="form-control" name="user_create_id">
+                <option value="">{{ $post->user_create_id }}</option>
             </select>
         </div>
         <!-- <div class="form-group">
@@ -60,7 +60,7 @@ Chỉnh sửa Users
         </div> -->
         <div class="form-group">
             <label for="">Nội dung</label>
-            <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value="{{ $post->content }}"></textarea>
+            <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value="">{{ $post->content }}</textarea>
         </div>
         <div>
           <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Hủy</a>

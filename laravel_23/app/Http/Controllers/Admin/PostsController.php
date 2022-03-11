@@ -16,7 +16,17 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = DB::table('posts')->get();
+        $title = \request()->get('title');
+        $status = \request()->get('status');
+        $posts_query = DB::table('posts')->select('*');
+
+        if (!empty($title)) {
+            $posts_query = $posts_query->where('title', "LIKE", "%$title%");
+        }
+        if (!empty($status)) {
+            $posts_query = $posts_query->where('status', "LIKE", "%$status%");
+        }
+        $posts = $posts_query->get();
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
