@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class PostsController extends Controller
         if (!empty($status)) {
             $posts_query = $posts_query->where('status', "LIKE", "%$status%");
         }
-        $posts = $posts_query->get();
+        $posts = Post::all();
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
@@ -75,8 +76,7 @@ class PostsController extends Controller
     public function show($id)
     {
         //
-        $post = DB::table('posts')->find($id);
-        // dd($post);
+        $post = Post::find($id);
         return view('admin.posts.show', ['post' => $post]);
     }
 
@@ -89,7 +89,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
-        $post = DB::table('posts')->find($id);
+        $post = Post::find($id);
         return view('admin.posts.edit', ['post' => $post]);
     }
 
@@ -125,7 +125,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('posts')->where('id', $id)->dekete();
+        Post::where('id', $id)->delete();
         return redirect()->route('admin.posts.index');
     }
 }
