@@ -60,13 +60,15 @@
                   @foreach($posts as $post)
                   <tr>
                         <td>{{ $post->id }}</td>
-                        <td> <a href="">{{ $post->title }}</a> </td>
+                        <td> <a href="">{{ $post->title }}</a> 
+                              <p>slug:{{ $post->slug }}</p>
+                      </td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
                         </td>
                         <td>{{ $post->category_id }}</td>
                         <td> {{ $post->user_create_id }} </td>
-                        <td> {{ $post->status }} </td>
+                        <td> {{ $post->status_text }} </td>
                         <td></td>
                         <td>{{ $post->created_at }}</td>
                         <td>

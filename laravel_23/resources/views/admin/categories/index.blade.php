@@ -61,7 +61,9 @@
                   @foreach($categories as $category)
                   <tr>
                         <td>{{ $category->id }}</td>
-                        <td> <a href="">{{ $category->name }}</a> </td>
+                        <td> <a href="">{{ $category->name }}</a> 
+                              <p>Slug:{{ $category->slug }}</p>
+                      </td>
                         <td></td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">

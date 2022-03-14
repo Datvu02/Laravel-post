@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
@@ -16,7 +17,8 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $categories = DB::table('categories')->get();
+        $categories = Category::all();
+        dd($categories);
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -41,11 +43,18 @@ class CategoriesController extends Controller
     {
         //
         $data = request();
-        DB::table('categories')->insert([
-            'name' => $data['name'],
-           'created_at' => now(),
-           'updated_at' => now()
-        ]);
+        $category = new Category();
+        $category->name = $data['name'];
+        // $category->slug = $data['slug'];
+        $category->save();
+        dd($category->slug);
+        // $category->name = $data['name'];
+        // $data = request();
+        // DB::table('categories')->insert([
+        //     'name' => $data['name'],
+        //    'created_at' => now(),
+        //    'updated_at' => now()
+        // ]);
         return redirect()->route('admin.categories.index');
     }
 

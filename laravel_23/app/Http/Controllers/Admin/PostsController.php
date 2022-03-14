@@ -28,6 +28,7 @@ class PostsController extends Controller
             $posts_query = $posts_query->where('status', "LIKE", "%$status%");
         }
         $posts = Post::all();
+        // dd($posts->status);
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
@@ -53,17 +54,14 @@ class PostsController extends Controller
     {
         //
         $data = request();
-        DB::table('posts')->insert([
-            'title' =>  $data['title'],
-           'slug' =>  $data['slug'],
-           'content' =>  $data['content'],
-           'user_create_id' => 1,
-           'category_id' =>  1,
-           'status' => 1,
-           'created_at' => now(),
-           'updated_at' => now()
-
-        ]);
+        $post = new Post();
+        $post->title = $data['title'];
+        // $post->slug = $data['slug'];
+        $post->content = $data['content'];
+        $post->user_create_id = 1;
+        $post->category_id = 1;
+        $post->status = 1;
+        $post->save();
         return redirect()->route('admin.posts.index');
     }
 
