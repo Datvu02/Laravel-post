@@ -71,9 +71,9 @@
                         <td> {{ $post->status_text }} </td>
                         <td></td>
                         <td>{{ $post->created_at }}</td>
-                        <td>
-                            <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-danger">Show</a>
-                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Chỉnh sửa</a>
+                        <td class="activate">
+                            <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                             <form method="POST" action="{{ route('admin.posts.destroy', $post->id) }}">
                               @csrf
                               @method('DELETE')
@@ -83,9 +83,10 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach;
+                    @endforeach
                   </tbody>
                 </table>
+                {{ $posts->links() }}
               </div>
               <!-- /.card-body -->
             </div>

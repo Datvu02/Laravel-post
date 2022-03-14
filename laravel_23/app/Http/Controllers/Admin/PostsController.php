@@ -19,7 +19,7 @@ class PostsController extends Controller
         //
         $title = \request()->get('title');
         $status = \request()->get('status');
-        $posts_query = DB::table('posts')->select('*');
+        $posts_query = Post::orderBy('created_at', 'desc')->select('*')->paginate(5);
 
         if (!empty($title)) {
             $posts_query = $posts_query->where('title', "LIKE", "%$title%");
@@ -27,7 +27,7 @@ class PostsController extends Controller
         if (!empty($status)) {
             $posts_query = $posts_query->where('status', "LIKE", "%$status%");
         }
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         // dd($posts->status);
         return view('admin.posts.index', ['posts' => $posts]);
     }
@@ -123,7 +123,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
-        Post::where('id', $id)->delete();
+        $post = Post::find($id)->delete();
         return redirect()->route('admin.posts.index');
     }
 }

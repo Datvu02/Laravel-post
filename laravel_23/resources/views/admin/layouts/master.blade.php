@@ -29,6 +29,13 @@
           text-align: center;
           vertical-align: middle !important;
       }
+      .activate{
+        display: flex;
+        padding-top: 45px!important;
+        }
+        .activate a{
+        margin: 0 10px;
+        }
   </style>
     @yield('CSS')
 </head>

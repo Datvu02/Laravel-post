@@ -18,7 +18,7 @@ class UsersController extends Controller
         //
         $email = \request()->get('email');
         $name = \request()->get('name');
-        $users_query = DB::table('users')->select('*');
+        $users_query = User::orderBy('created_at', 'desc')->select('*')->paginate(5);
 
         if (!empty($email)) {
             $users_query = $users_query->where('email', "LIKE", "%$email%");
@@ -26,7 +26,7 @@ class UsersController extends Controller
         if (!empty($name)) {
             $users_query = $users_query->where('name', "LIKE", "%$name%");
         }
-        $users = $users_query->get();
+        $users = User::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.users.index', ['users' => $users]);
     }
 

@@ -62,10 +62,10 @@
                       <td><img src="{{ $user->avatar }}" alt=""></td>
                       <td>{{ $user->email }}</td>
                       <td>{{ $user->created_at }}</td>
-                      <td>
-                          <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-danger">Show</a>
-                          <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">Chỉnh sửa</a>
-                          <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
+                      <td class="activate">
+                            <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger">
@@ -74,9 +74,10 @@
                             </form>
                       </td>
                     </tr>
-                    @endforeach;
+                    @endforeach
                   </tbody>
                 </table>
+                {{ $users->links() }}
               </div>
               <!-- /.card-body -->
             </div>

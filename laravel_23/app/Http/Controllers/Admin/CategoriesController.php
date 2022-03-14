@@ -17,7 +17,9 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
+        // Paginator::useBootstrap();
+        $categories = Category::orderBy('created_at', 'desc')->paginate(5);
+        
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -100,7 +102,22 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('categories')->where('id', $id)->delete();
+        Category::destroy($id);
+        return redirect()->route('admin.categories.index');
+    }
+
+    public function deletesList()
+    {
+        $categories = Category::onlyTrashed()->get();
+
+        return view('admin.categories.deletesList', ['categories' => $categories]);
+    }
+
+    public function restore($id)
+    {
+        //
+        $category = Category::onlyTrashed()->where('id', $id)->first();
+        $category->restore();
         return redirect()->route('admin.categories.index');
     }
 }

@@ -25,9 +25,15 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
   Route::Resource('users', UsersController::class)->parameters([
     'user' => 'user_id'
   ]);
+  // Route::get('/user/restore/{user_id}', 'CategoriesControllers@restore')->name("users.restore");
   Route::Resource('posts', PostsController::class)->parameters([
     'post' => 'post_id'
   ]);
+  
+  Route::prefix('/categories')->name('categories.')->group(function(){
+    Route::get('/restore/{category_id}', 'CategoriesController@restore')->name("restore");
+    Route::get('/deletesList', 'CategoriesController@deletesList')->name("deletesList");
+  });
   Route::Resource('categories', CategoriesController::class)->parameters([
     'category' => 'category_id'
   ]);
