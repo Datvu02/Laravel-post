@@ -101,16 +101,16 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::find($id);
         $data = request();
-        DB::table('posts')->where('id', $id)->update([
-            'title' =>  $data['title'],
-        //    'slug' =>  $data['slug'],
-           'content' =>  $data['content'],
-        //    'user_create_id' => 1,
-        //    'category_id' =>  1,
-           'status' => $data['status'],
-           'updated_at' => now()
-        ]);
+        // $post = new Post();
+        $post->title = $data['title'];
+        // $post->slug = $data['slug'];
+        $post->content = $data['content'];
+        $post->user_create_id = 1;
+        $post->category_id = 1;
+        $post->status = 1;
+        $post->save();
         return redirect()->route('admin.posts.index');
     }
 

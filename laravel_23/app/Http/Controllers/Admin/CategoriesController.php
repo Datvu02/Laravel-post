@@ -18,7 +18,6 @@ class CategoriesController extends Controller
     {
         //
         $categories = Category::all();
-        dd($categories);
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -45,16 +44,7 @@ class CategoriesController extends Controller
         $data = request();
         $category = new Category();
         $category->name = $data['name'];
-        // $category->slug = $data['slug'];
         $category->save();
-        dd($category->slug);
-        // $category->name = $data['name'];
-        // $data = request();
-        // DB::table('categories')->insert([
-        //     'name' => $data['name'],
-        //    'created_at' => now(),
-        //    'updated_at' => now()
-        // ]);
         return redirect()->route('admin.categories.index');
     }
 
@@ -79,7 +69,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        $category = DB::table('categories')->find($id);
+        $category = Category::find($id);
 
         return view('admin.categories.edit', ['category' => $category]);
     }
@@ -94,11 +84,10 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $category = Category::find($id);
         $data = request();
-        DB::table('categories')->where('id', $id)->update([
-            'name' => $data['name'],
-            'updated_at' => now()
-        ]);
+        $category->name = $data['name'];
+        $category->save();
         return redirect()->route('admin.categories.index');
     }
 

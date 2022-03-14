@@ -50,7 +50,6 @@
                     <tr>
                       <th>ID</th>
                       <th>Tên</th>
-                      <th>Mô tả</th>
                       <th>Ảnh</th>
                       <th>Danh mục cha</th>
                       <th>Thời gian tạo</th>
@@ -64,7 +63,6 @@
                         <td> <a href="">{{ $category->name }}</a> 
                               <p>Slug:{{ $category->slug }}</p>
                       </td>
-                        <td></td>
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
                         </td>
