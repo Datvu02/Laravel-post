@@ -123,6 +123,12 @@
                 <p>Tạo mới user</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.users.deletesList') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Users đã xóa</p>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>

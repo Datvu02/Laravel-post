@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
@@ -27,6 +29,7 @@ class UsersController extends Controller
             $users_query = $users_query->where('name', "LIKE", "%$name%");
         }
         $users = User::orderBy('created_at', 'desc')->paginate(5);
+        // dd($user->user_info);
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -74,7 +77,9 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        $user = DB::table('users')->find($id);
+        $user = User::find($id);
+        $userInfo = $user->userInfo;
+        dd($userInfo);
         return view('admin.users.show', ['user' => $user]);
     }
 
@@ -125,6 +130,20 @@ class UsersController extends Controller
     {
         //
         DB::table('users')->where('id', $id)->delete();
+        return redirect()->route('admin.users.index');
+    }
+    public function deletesList()
+    {
+        $users = User::onlyTrashed()->paginate(5);
+
+        return view('admin.users.deletesList', ['users' => $users]);
+    }
+
+    public function restore($id)
+    {
+        //
+        $user = User::onlyTrashed()->where('id', $id)->first();
+        $user->restore();
         return redirect()->route('admin.users.index');
     }
 }

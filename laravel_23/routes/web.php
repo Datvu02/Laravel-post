@@ -22,6 +22,10 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
 
   Route::get('/', 'DashboardController@index' )->name('home');
 
+  Route::prefix('/users')->name('users.')->group(function(){
+    Route::get('/restore/{user_id}', 'UsersController@restore')->name("restore");
+    Route::get('/deletesList', 'UsersController@deletesList')->name("deletesList");
+  });
   Route::Resource('users', UsersController::class)->parameters([
     'user' => 'user_id'
   ]);

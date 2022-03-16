@@ -108,7 +108,7 @@ class CategoriesController extends Controller
 
     public function deletesList()
     {
-        $categories = Category::onlyTrashed()->get();
+        $categories = Category::onlyTrashed()->paginate(5);
 
         return view('admin.categories.deletesList', ['categories' => $categories]);
     }

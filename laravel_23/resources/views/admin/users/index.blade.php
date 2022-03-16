@@ -49,6 +49,8 @@
                       <th>ID</th>
                       <th>Name</th>
                       <th>Avatar</th>
+                      <th>Địa chỉ</th>
+                      <th>Điện thoại</th>
                       <th>Email</th>
                       <th>Thời gian tạo</th>
                       <th>Hoạt động</th>
@@ -60,6 +62,8 @@
                       <td>{{ $user->id }}</td>
                       <td> <a href="">{{ $user->name }}</a> </td>
                       <td><img src="{{ $user->avatar }}" alt=""></td>
+                      <td>{{ $user->userInfo->address }}</td>
+                      <td>{{ $user->userInfo->phone }}</td>
                       <td>{{ $user->email }}</td>
                       <td>{{ $user->created_at }}</td>
                       <td class="activate">
