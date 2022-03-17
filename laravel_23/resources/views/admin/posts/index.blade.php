@@ -66,7 +66,7 @@
                         <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
                         </td>
-                        <td>{{ $post->category_id }}</td>
+                        <td>{{ $post->category->name }}</td>
                         <td> {{ $post->user_create_id }} </td>
                         <td> {{ $post->status_text }} </td>
                         <td></td>
