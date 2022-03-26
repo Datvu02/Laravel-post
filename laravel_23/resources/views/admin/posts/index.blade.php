@@ -3,7 +3,20 @@
   Danh sách Blog
 @endsection
 @section ('CSS')
-  
+  <style>
+    .tags{
+      /* width: 200px; */
+    }
+    .tag{
+      float: left;
+      margin: 2px;
+      background-color:#3498DB ;
+      width: auto;
+      border-radius: 5px;
+      color:white;
+      padding: 5px;
+    }
+  </style>
 @endsection
 
 @section ('content-header')
@@ -47,11 +60,12 @@
                     <tr>
                     <th>ID</th>
                       <th>Tiêu đề</th>
-                      <th>Ảnh</th>
+                      <!-- <th>Ảnh</th> -->
                       <th>Danh mục</th>
                       <th>Tác giả</th>
+                      <!-- <th>Người cập nhật</th> -->
                       <th>Trạng thái</th>
-                      <th>Lượt xem</th>
+                      <th>Tag</th>
                       <th>Thời gian tạo</th>
                       <th>Hoạt động</th>
                     </tr>
@@ -63,13 +77,18 @@
                         <td> <a href="">{{ $post->title }}</a> 
                               <p>slug:{{ $post->slug }}</p>
                       </td>
-                        <td>
+                        <!-- <td>
                             <img src="assets/Admin/uploads/" width="100%" height="100px" style="border-radius: 5px; object-fit: cover;">
-                        </td>
+                        </td> -->
                         <td>{{ $post->category->name }}</td>
-                        <td> {{ $post->user_create_id }} </td>
+                        <td> {{ $post->user->name }} </td>
+                        <!-- <td> {{ $post->user->name }} </td> -->
                         <td> {{ $post->status_text }} </td>
-                        <td></td>
+                        <td class="tags">
+                          @foreach($post->tags as $tag)
+                              <h5 class="tag">{{ $tag->name }}</h5>
+                          @endforeach
+                        </td>
                         <td>{{ $post->created_at }}</td>
                         <td class="activate">
                             <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>

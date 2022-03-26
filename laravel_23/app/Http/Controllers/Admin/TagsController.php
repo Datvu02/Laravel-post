@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,9 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        // Paginator::useBootstrap();
-        $categories = Category::orderBy('created_at', 'desc')->paginate(5);
+        $tags = Tag::orderBy('created_at', 'desc')->paginate(5);
         
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.tags.index', ['tags' => $tags]);
     }
 
     /**
@@ -31,7 +29,7 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -44,10 +42,10 @@ class CategoriesController extends Controller
     {
         //
         $data = request();
-        $category = new Category();
-        $category->name = $data['name'];
-        $category->save();
-        return redirect()->route('admin.categories.index');
+        $tag = new Tag();
+        $tag->name = $data['name'];
+        $tag->save();
+        return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -59,8 +57,8 @@ class CategoriesController extends Controller
     public function show($id)
     {
         //
-        $category = Category::find($id);
-        return view('admin.categories.show');
+        $tag = Tag::find($id);
+        return view('admin.tags.show');
     }
 
     /**
@@ -72,9 +70,9 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        $category = Category::find($id);
+        $tag = Tag::find($id);
 
-        return view('admin.categories.edit', ['category' => $category]);
+        return view('admin.tags.edit', ['category' => $category]);
     }
 
     /**
@@ -87,11 +85,11 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $category = Category::find($id);
+        $tag = Tag::find($id);
         $data = request();
-        $category->name = $data['name'];
-        $category->save();
-        return redirect()->route('admin.categories.index');
+        $tag->name = $data['name'];
+        $tag->save();
+        return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -103,35 +101,22 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        Category::destroy($id);
-        return redirect()->route('admin.categories.index');
+        Tag::destroy($id);
+        return redirect()->route('admin.tags.index');
     }
 
     public function deletesList()
     {
-        $categories = Category::onlyTrashed()->paginate(5);
+        $tags = Tag::onlyTrashed()->paginate(5);
 
-        return view('admin.categories.deletesList', ['categories' => $categories]);
+        return view('admin.tags.deletesList', ['tags' => $tags]);
     }
 
     public function restore($id)
     {
         //
-        $category = Category::onlyTrashed()->where('id', $id)->first();
-        $category->restore();
-        return redirect()->route('admin.categories.index');
-    }
-
-    // frontend
-    public function frontendIndex()
-    {
-        # code...
-        return view('frontend.categories.index');
-    }
-
-    public function postsCategory($id)
-    {
-        # code...
-        return view('frontend.categories.postsCategory');
+        $tag = Tag::onlyTrashed()->where('id', $id)->first();
+        $tag->restore();
+        return redirect()->route('admin.tags.index');
     }
 }

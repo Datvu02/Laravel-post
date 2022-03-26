@@ -48,4 +48,8 @@ class User extends Authenticatable
         return $this->hasOne(UserInfo::class);
     }
 
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'user_create_id');
+    }
 }

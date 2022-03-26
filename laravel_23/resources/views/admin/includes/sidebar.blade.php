@@ -16,7 +16,11 @@
         <img src="/backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Vũ Quốc Đạt</a>
+        <a href="#" class="d-block">
+          @if(auth()->check())
+            {{ auth()->user()->name }}
+          @endif
+        </a>
       </div>
     </div>
 
@@ -100,8 +104,38 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item @if (request()->routeIs('admin.tags.*')) menu-open @endif">
+          <a href="#2" class="nav-link @if (request()->routeIs('admin.tags.*')) active @endif">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Quản lý Tags
+              <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="{{ route('admin.tags.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách tags</p>
+                  </a>
+              </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.tags.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tạo mới tags</p>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a href="{{ route('admin.tags.deletesList') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tag đã xóa</p>
+              </a>
+            </li> -->
+          </ul>
+        </li>
         <li class="nav-header">Hệ thống</li>
-        <li class="nav-item @if (request()->routeIs('admin.users.*')) menu-open @endif">
+        <li class="nav-item @if (request()->routeIs('auth.*')) menu-open @endif">
           <a href="#2" class="nav-link @if (request()->routeIs('admin.users.*')) active @endif">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -118,12 +152,6 @@
                   </a>
               </li>
             <li class="nav-item">
-              <a href="{{ route('admin.users.create') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Tạo mới user</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="{{ route('admin.users.deletesList') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Users đã xóa</p>
@@ -131,6 +159,42 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item @if (request()->routeIs('auth.*')) menu-open @endif">
+          <a href="#2" class="nav-link @if (request()->routeIs('auth.*')) active @endif">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Auth
+              <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('auth.login') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Login</p>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('auth.register') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Register</p>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+                  <a href="{{ route('auth.login') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logout</p>
+                  </a>
+              </li> -->
+          </ul>
+        </li>
+        <form method="post"  action="{{ route('auth.logout') }}">
+          @csrf
+          <a href="#" class="nav-link" onclick="this.closest('form').submit();return false;">
+            Logout
+          </a>
+        </form>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

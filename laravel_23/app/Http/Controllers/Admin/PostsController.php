@@ -28,7 +28,7 @@ class PostsController extends Controller
             $posts_query = $posts_query->where('status', "LIKE", "%$status%");
         }
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        // dd($posts->status);
+        // dd($posts->tags);
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
@@ -75,6 +75,10 @@ class PostsController extends Controller
     {
         //
         $post = Post::find($id);
+        foreach($post->tags as $tag){
+            echo $tag->name;
+        }
+        // dd($post->tags);
         return view('admin.posts.show', ['post' => $post]);
     }
 
@@ -125,5 +129,19 @@ class PostsController extends Controller
         //
         $post = Post::find($id)->delete();
         return redirect()->route('admin.posts.index');
+    }
+    
+    //frontend
+
+    public function frontendIndex()
+    {
+        # code...
+        return view('frontend.posts.edit');
+    }
+
+    public function detail($id)
+    {
+        # code...
+        return view('frontend.posts.detail');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;  
 
 class UsersController extends Controller
 {
@@ -27,6 +28,12 @@ class UsersController extends Controller
         }
         if (!empty($name)) {
             $users_query = $users_query->where('name', "LIKE", "%$name%");
+        }
+        
+        if(Auth::check()){
+            $user = Auth::user();
+        }else {
+            return view('auth.login');
         }
         $users = User::orderBy('created_at', 'desc')->paginate(5);
         // dd($user->user_info);
@@ -63,7 +70,6 @@ class UsersController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'password' => $data['password'],
-            // 'updated_at' => now()
         ]);
         return redirect()->route('admin.users.index');
     }
@@ -79,7 +85,7 @@ class UsersController extends Controller
         //
         $user = User::find($id);
         $userInfo = $user->userInfo;
-        dd($userInfo);
+        // dd($userInfo);
         return view('admin.users.show', ['user' => $user]);
     }
 

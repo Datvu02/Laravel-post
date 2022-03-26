@@ -25,16 +25,21 @@
   <!-- summernote -->
   <link rel="stylesheet" href="/backend/plugins/summernote/summernote-bs4.min.css">
   <style>
-      td,th{
+        td,th{
+        width: max-content;
           text-align: center;
+          justify-content: center;
           vertical-align: middle !important;
-      }
-      .activate{
-        display: flex;
-        padding-top: 45px!important;
+        }
+        .activate{
+            display: flex;
+            padding-top: 45px!important;
         }
         .activate a{
-        margin: 0 10px;
+            margin: 0 10px;
+        }
+        .container-fluid{
+            overflow: auto;
         }
   </style>
     @yield('CSS')
