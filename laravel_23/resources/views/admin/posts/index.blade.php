@@ -92,7 +92,10 @@
                         <td>{{ $post->created_at }}</td>
                         <td class="activate">
                             <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                            @can('update', $post)
                             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            @endcan
+                            @can('delete', $post)
                             <form method="POST" action="{{ route('admin.posts.destroy', $post->id) }}">
                               @csrf
                               @method('DELETE')
@@ -100,6 +103,7 @@
                                 <i class="fas fa-trash"></i>
                               </button>
                             </form>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach

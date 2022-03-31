@@ -15,15 +15,6 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function logout(Request $request)
-    {
-        # code...
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('admin/');
-    }
-
     public function authenticate(Request $request)
     {
         # code...
@@ -31,7 +22,14 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
-        if(Auth::attempt($credentials)){
+        if($request->get('remember')){
+            $remember = true;
+        }else{
+            $remember = true;
+        };
+        // if (Auth::attempt(['email' => $email, 'password' => $password], $remember));
+
+        if(Auth::attempt($credentials, $remember)){
             $request->session()->regenerate();
 
             return redirect()->intended('admin/');
@@ -40,4 +38,13 @@ class LoginController extends Controller
             'email' => 'errol'
         ]);
       }
+
+    public function logout(Request $request)
+    {
+        # code...
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/admin');
+    }
 }

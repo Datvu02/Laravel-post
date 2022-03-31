@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 // })->name("login");
 Route::prefix('auth')->name('auth.')->namespace('Auth')->group(function(){
   Route::get('/register', 'RegisterUserController@create' )->name('register')->middleware('guest');
-  Route::post('/register', 'RegisterUserController@store' )->middleware('guest');
+  Route::post('/register', 'RegisterUserController@store' )->name('register')->middleware('guest');
   Route::get('/login', 'LoginController@create' )->name('login')->middleware('guest');
   Route::post('/login', 'LoginController@authenticate' )->name('login')->middleware('guest');
   Route::post('/logout', 'LoginController@logout' )->name('logout');
 });
-Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function(){
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth', 'role:admin')->group(function(){
   // Trang chủ
   Route::get('/', 'DashboardController@index' )->name('home');
   

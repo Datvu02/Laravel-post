@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
+    public function __contruct()
+    {
+        # code...
+        $this->authorizeResource(Post::class, 'post');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +58,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create', Post::class);
         $data = request();
         $post = new Post();
         $post->title = $data['title'];
@@ -102,10 +108,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //
-        $post = Post::find($id);
+        // $post = Post::find($id);
+        // if (! Gate::allows('update-post', $post)) {
+        //     abort(403);
+        // }
+        $this->authorize('update', $post);
         $data = request();
         // $post = new Post();
         $post->title = $data['title'];
@@ -127,6 +137,10 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        if (! Gate::allows('delete-post', $post)) {
+            abort(403);
+        }
         $post = Post::find($id)->delete();
         return redirect()->route('admin.posts.index');
     }
