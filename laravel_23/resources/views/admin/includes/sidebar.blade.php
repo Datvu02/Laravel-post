@@ -134,6 +134,36 @@
             </li> -->
           </ul>
         </li>
+        <li class="nav-item @if (request()->routeIs('admin.tags.*')) menu-open @endif">
+          <a href="#2" class="nav-link @if (request()->routeIs('admin.menus.*')) active @endif">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Quản lý Menus
+              <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="{{ route('admin.menus.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách menus</p>
+                  </a>
+              </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.menus.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tạo mới menus</p>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a href="{{ route('admin.menus.deletesList') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>menus đã xóa</p>
+              </a>
+            </li> -->
+          </ul>
+        </li>
         <li class="nav-header">Hệ thống</li>
         <li class="nav-item @if (request()->routeIs('auth.*')) menu-open @endif">
           <a href="#2" class="nav-link @if (request()->routeIs('admin.users.*')) active @endif">
@@ -189,12 +219,7 @@
               </li> -->
           </ul>
         </li>
-        <form method="post"  action="{{ route('auth.logout') }}">
-          @csrf
-          <a href="#" class="nav-link" onclick="this.closest('form').submit();return false;">
-            Logout
-          </a>
-        </form>
+        
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -54,6 +54,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
   Route::Resource('categories', CategoriesController::class)->parameters([
     'category' => 'category_id'
   ]);
+  Route::Resource('menus', MenusController::class)->parameters([
+    'menu' => 'menu_id'
+  ]);
 });
   
   //frontend
