@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/login', function () {
-//   return view('login');
-// })->name("login");
+
 Route::prefix('auth')->name('auth.')->namespace('Auth')->group(function(){
   Route::get('/register', 'RegisterUserController@create' )->name('register')->middleware('guest');
   Route::post('/register', 'RegisterUserController@store' )->name('register')->middleware('guest');
@@ -24,7 +22,7 @@ Route::prefix('auth')->name('auth.')->namespace('Auth')->group(function(){
   Route::post('/login', 'LoginController@authenticate' )->name('login')->middleware('guest');
   Route::post('/logout', 'LoginController@logout' )->name('logout');
 });
-Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth', 'role:admin')->group(function(){
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
   // Trang chủ
   Route::get('/', 'DashboardController@index' )->name('home');
   

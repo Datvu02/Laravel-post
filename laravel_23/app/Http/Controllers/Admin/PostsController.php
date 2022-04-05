@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
@@ -58,7 +59,11 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
-        $this->authorize('create', Post::class);
+        // $this->authorize('create', Post::class);
+        $validated = $request->validate([
+            'title' => 'required|uniqe:post|max:255',
+            'content' =>'required',
+        ]);
         $data = request();
         $post = new Post();
         $post->title = $data['title'];
@@ -68,6 +73,7 @@ class PostsController extends Controller
         $post->category_id = 1;
         $post->status = 1;
         $post->save();
+        $request->session()->flash('success','Thêm mới bài viết thành công');
         return redirect()->route('admin.posts.index');
     }
 
@@ -125,6 +131,7 @@ class PostsController extends Controller
         $post->category_id = 1;
         $post->status = 1;
         $post->save();
+        $request->session()->flash('success','Cập nhật bài viết thành công');
         return redirect()->route('admin.posts.index');
     }
 

@@ -45,6 +45,7 @@ class TagsController extends Controller
         $tag = new Tag();
         $tag->name = $data['name'];
         $tag->save();
+        $request->session()->flash('success','Thêm mới tag thành công');
         return redirect()->route('admin.tags.index');
     }
 
@@ -89,6 +90,7 @@ class TagsController extends Controller
         $data = request();
         $tag->name = $data['name'];
         $tag->save();
+        $request->session()->flash('success','Cập nhật tag thành công');
         return redirect()->route('admin.tags.index');
     }
 

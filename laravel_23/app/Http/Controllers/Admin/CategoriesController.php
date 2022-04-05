@@ -47,6 +47,7 @@ class CategoriesController extends Controller
         $category = new Category();
         $category->name = $data['name'];
         $category->save();
+        $request->session()->flash('success','Thêm mới danh mục thành công');
         return redirect()->route('admin.categories.index');
     }
 
@@ -91,6 +92,7 @@ class CategoriesController extends Controller
         $data = request();
         $category->name = $data['name'];
         $category->save();
+        $request->session()->flash('success','Cập nhật danh mục thành công');
         return redirect()->route('admin.categories.index');
     }
 

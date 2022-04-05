@@ -28,13 +28,10 @@
             @csrf
             <div class="form-group">
                 <label for="">Tiêu đề</label>
-                <input type="text" class="form-control" id="" placeholder="" name="title">
-            </div>
-            <div class="form-group">
-                <label for="">Slug</label>
-                <input type="text" class="form-control" id="" placeholder="" name="slug">
-                <!-- <textarea name="description" class="form-control" id="" cols="40" rows="5"></textarea> -->
-                <!-- <input type="text" class="form-control" id="" placeholder="" name="description"> -->
+                <input type="text" class="form-control" id="" placeholder="" name="title" value="{{ old('title') }}">
+                @error('title')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Ảnh</label>
@@ -54,7 +51,10 @@
             </div>
             <div class="form-group">
                 <label for="">Nội dung</label>
-                <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10"></textarea>
+                <textarea name="content" class="form-control" id="contentMovie" cols="40" rows="10" value="{{ old('title') }}"></textarea>
+                @error('content')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Hủy</a>
             <button style="margin-left:85%" type="submit" class="btn btn-primary">Tạo mới</button>

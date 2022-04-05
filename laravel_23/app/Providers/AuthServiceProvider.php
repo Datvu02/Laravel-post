@@ -30,14 +30,38 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('update-post', function(User $user, Post $post){
-            return $user->id === $post->user_id | $user->role == 'admin';
+            //   kiem tra user id hien tai co bang user trong post ko
+            // cach 1
+            if($user->id === $post->user_created_id){
+                return true;
+            }else{
+                return false;
+            }
+            //    cach 2
+            // return $user->id === $post->user_id | $user->role == 'admin';
         });
 
         Gate::define('delete-post', function(User $user, Post $post){
-            return $user->id === $post->user_id | $user->role == 'admin';
+            //   kiem tra user id hien tai co bang user trong post ko
+            // cach 1
+            if($user->id === $post->user_created_id){
+                return true;
+            }else{
+                return false;
+            }
+            //    cach 2
+            // return $user->id === $post->user_id | $user->role == 'admin';
         });
         Gate::define('delete-user', function(User $user){
-            return $user->role == 'admin';
+            //   kiem tra user id hien tai co bang user trong post ko
+            // cach 1
+            if($user->role == 'admin'){
+                return true;
+            }else{
+                return false;
+            }
+            //    cach 2
+            // return $user->role == 'admin';
         });
 
         //

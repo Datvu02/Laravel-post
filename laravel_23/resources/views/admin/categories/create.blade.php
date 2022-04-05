@@ -6,6 +6,16 @@
 @endsection
 
 @section ('content-header')
+@if (session('error'))
+<div class="alert alert-danger" role="alert">
+{{ session('error') }}
+</div>
+@endif
+@if (session('success'))
+<div class="alert alert-success" role="alert">
+{{ session('success') }}
+</div>
+@endif
   <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
