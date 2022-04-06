@@ -157,7 +157,7 @@
               </a>
             </li>
             <!-- <li class="nav-item">
-              <a href="{{ route('admin.menus.deletesList') }}" class="nav-link">
+              <a href="" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>menus đã xóa</p>
               </a>
@@ -219,7 +219,12 @@
               </li> -->
           </ul>
         </li>
-        
+        <li class="nav-item">
+                <a href="http://laravel.vd.com/log-viewer" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Log</p>
+                </a>
+            </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

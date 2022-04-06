@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 class MenusController extends Controller
 {
@@ -15,9 +18,9 @@ class MenusController extends Controller
     public function index()
     {
         //
-        $menus = Menu::all();
+        $menus = Menu::orderBy('created_at', 'desc')->paginate(5);
 
-        return view('backend.menus.index')->with([
+        return view('admin.menus.index')->with([
             'menus' => $menus
         ]);
     }
@@ -30,7 +33,7 @@ class MenusController extends Controller
     public function create()
     {
         //
-        return view('backend.menus.create');
+        return view('adnin.menus.create');
     }
 
     /**
@@ -54,7 +57,7 @@ class MenusController extends Controller
         //dd($category);
         $menu->save();
         // $request->session()->flash('success','Thêm mới menu thành công');
-        return redirect()->route('backend.menus.index');
+        return redirect()->route('admin.menus.index');
     }
 
     /**
@@ -78,7 +81,7 @@ class MenusController extends Controller
     {
         //
         $menus = Menu::firstwhere('id', $id);
-        return view('backend.menus.edit')->with([
+        return view('admin.menus.edit')->with([
             'menus' => $menus
         ]);
     }
@@ -109,7 +112,7 @@ class MenusController extends Controller
 
         $menu->save();
         // $request->session()->flash('success','Cập nhật menu thành công');
-        return redirect()->route('backend.menus.index');
+        return redirect()->route('admin.menus.index');
     }
 
     /**
